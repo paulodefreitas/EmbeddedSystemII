@@ -48,7 +48,7 @@ Reed Switch KY - 025
 
 
 ## Passive Buzzer KY - 006
-Reed Switch KY - 025
+Passive Buzzer KY - 006
 
 ## Code - Passive Buzzer KY - 006
 
@@ -95,7 +95,7 @@ Reed Switch KY - 025
 [![Watch the video](https://img.youtube.com/vi/zVmLQ4d6fwc/maxresdefault.jpg)](https://youtu.be/zVmLQ4d6fwc)
 
 ## Active Buzzer Module KY - 012
-Reed Switch KY - 025
+Active Buzzer Module KY - 012
 
 ## Code - Active Buzzer Module KY - 012
 
