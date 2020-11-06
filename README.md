@@ -120,3 +120,38 @@ Active Buzzer Module KY - 012
 ## Video - Active Buzzer Module KY - 012
 
 [![Watch the video](https://img.youtube.com/vi/8FQvt4dKiAs/maxresdefault.jpg)](https://youtu.be/8FQvt4dKiAs)
+
+## Photo Interrupter Module KY - 010
+Photo Interrupter Module KY - 010
+
+## Code - Photo Interrupter Module - 010
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">Led</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define LED pin</font>
+<font color="#00979c">int</font> <font color="#000000">buttonpin</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define photo interrupter signal pin</font>
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;define a numeric variable</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; LED pin as output</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">buttonpin</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;photo interrupter pin as input</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#000000">val</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">buttonpin</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;read the value of the sensor</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font><font color="#000000">)</font> <font color="#434f54">&#47;&#47; turn on LED when sensor is blocked</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">else</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Photo Interrupter Module KY - 010
+
+[![Watch the video](https://img.youtube.com/vi/by2LKrGd44s/maxresdefault.jpg)](https://youtu.be/by2LKrGd44s)
