@@ -155,3 +155,32 @@ Photo Interrupter Module KY - 010
 ## Video - Photo Interrupter Module KY - 010
 
 [![Watch the video](https://img.youtube.com/vi/by2LKrGd44s/maxresdefault.jpg)](https://youtu.be/by2LKrGd44s)
+
+## Mini Magnetic Reed Switch Module KY - 021
+Mini Magnetic Reed Switch Module - 021
+
+## Code - Mini Magnetic Reed Switch Module - 021
+
+<pre>
+<font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">pinoLed</font> <font color="#434f54">=</font> <font color="#000000">12</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO DIGITAL UTILIZADO PELO LED</font>
+<font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">pinoSensor</font> <font color="#434f54">=</font> <font color="#000000">8</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO DIGITAL UTILIZADO PELO SENSOR</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoSensor</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO ENTRADA</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO SAÍDA</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;LED INICIA DESLIGADO</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">pinoSensor</font><font color="#000000">)</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;SE A LEITURA DO PINO FOR IGUAL A LOW, FAZ</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;ACENDE O LED</font>
+ &nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font> <font color="#434f54">&#47;&#47;SENÃO, FAZ</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;APAGA O LED</font>
+ &nbsp;<font color="#000000">}</font>
+
+</pre>
+
+
+## Video - Mini Magnetic Reed Switch Module - 021
+
+[![Watch the video](https://img.youtube.com/vi/s01sT55KoYg/maxresdefault.jpg)](https://youtu.be/s01sT55KoYg)
