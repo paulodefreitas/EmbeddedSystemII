@@ -184,3 +184,38 @@ Mini Magnetic Reed Switch Module - 021
 ## Video - Mini Magnetic Reed Switch Module - 021
 
 [![Watch the video](https://img.youtube.com/vi/s01sT55KoYg/maxresdefault.jpg)](https://youtu.be/s01sT55KoYg)
+
+## Tap Module KY - 031
+Tap Module KY - 031
+
+## Code - Tap Module KY - 031
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">Led</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; LED on Arduino board</font>
+<font color="#00979c">int</font> <font color="#000000">Shock</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; sensor signal</font>
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; numeric variable to store sensor status</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;&nbsp;<font color="#434f54">&#47;&#47; define LED as output interface</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">Shock</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; define input for sensor signal</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#000000">val</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">Shock</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; read and assign the value of digital interface 3 to val</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font><font color="#000000">)</font> <font color="#434f54">&#47;&#47; when sensor detects a signal, the LED flashes</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">else</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Tap Module KY - 031
+
+[![Watch the video](https://img.youtube.com/vi/zRITETRAVTo/maxresdefault.jpg)](https://youtu.be/zRITETRAVTo)
