@@ -219,3 +219,39 @@ Tap Module KY - 031
 ## Video - Tap Module KY - 031
 
 [![Watch the video](https://img.youtube.com/vi/zRITETRAVTo/maxresdefault.jpg)](https://youtu.be/zRITETRAVTo)
+
+
+## Two color led module ky-011(hw-480)
+Two color led module ky-011(hw-480)
+
+## Code - Two color led module ky-011(hw-480)
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">redpin</font> <font color="#434f54">=</font> <font color="#000000">11</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; pin for red signal</font>
+<font color="#00979c">int</font> <font color="#000000">greenpin</font> <font color="#434f54">=</font> <font color="#000000">10</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; pin for green signal</font>
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">redpin</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">greenpin</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#5e6d03">for</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">=</font> <font color="#000000">255</font><font color="#000000">;</font> <font color="#000000">val</font> <font color="#434f54">&gt;</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">val</font><font color="#434f54">--</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">redpin</font><font color="#434f54">,</font> <font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;dim red</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">greenpin</font><font color="#434f54">,</font> <font color="#000000">255</font> <font color="#434f54">-</font> <font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; brighten green</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">15</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">for</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">val</font> <font color="#434f54">&lt;</font> <font color="#000000">255</font><font color="#000000">;</font> <font color="#000000">val</font><font color="#434f54">++</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">redpin</font><font color="#434f54">,</font> <font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;brighten red</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">greenpin</font><font color="#434f54">,</font> <font color="#000000">255</font> <font color="#434f54">-</font> <font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;dim green</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">15</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+
+## Video - Two color led module ky-011(hw-480)
+
+[![Watch the video](https://img.youtube.com/vi/_MWUV_L_CHI/maxresdefault.jpg)](https://youtu.be/_MWUV_L_CHI)
