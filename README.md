@@ -255,3 +255,29 @@ Two color led module ky-011(hw-480)
 ## Video - Two color led module ky-011(hw-480)
 
 [![Watch the video](https://img.youtube.com/vi/_MWUV_L_CHI/maxresdefault.jpg)](https://youtu.be/_MWUV_L_CHI)
+
+
+## Laser Transmitter Module KY-008
+Laser Transmitter Module KY-008
+
+## Code - Laser Transmitter Module KY-008
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">laserPin</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">laserPin</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Define the digital output interface pin 13</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">laserPin</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Open the laser head</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Delay one second</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">laserPin</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Close the laser head</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Laser Transmitter Module KY-008
+
+[![Watch the video](https://img.youtube.com/vi/7e5Htg6cank/maxresdefault.jpg)](https://youtu.be/7e5Htg6cank)
