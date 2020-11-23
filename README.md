@@ -281,3 +281,41 @@ Laser Transmitter Module KY-008
 ## Video - Laser Transmitter Module KY-008
 
 [![Watch the video](https://img.youtube.com/vi/7e5Htg6cank/maxresdefault.jpg)](https://youtu.be/7e5Htg6cank)
+
+
+## Magic Light Cup Module KY-027
+Magic Light Cup Module KY-027
+
+## Code - Magic Light Cup Module KY-027
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">Led</font> <font color="#434f54">=</font> <font color="#000000">13</font> <font color="#000000">;</font><font color="#434f54">&#47;&#47; Declaration of the LED-output pin</font>
+<font color="#00979c">int</font> <font color="#000000">Sensor</font> <font color="#434f54">=</font> <font color="#000000">10</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Declaration of the sensor input pin</font>
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Temporary variable</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font> <font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font> <font color="#000000">;</font> <font color="#434f54">&#47;&#47; Initialization output pin</font>
+ &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">Sensor</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font> <font color="#000000">;</font> <font color="#434f54">&#47;&#47; Initialization sensor pin</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">Sensor</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Activating of the internal pull-up resistor</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font> <font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#000000">val</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font> <font color="#000000">(</font><font color="#000000">Sensor</font><font color="#000000">)</font> <font color="#000000">;</font> <font color="#434f54">&#47;&#47; The current signal from the sensor will be read</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font><font color="#000000">)</font> <font color="#434f54">&#47;&#47; If a signal will be detected, the LED will light up.</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">else</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Magic Light Cup Module KY-027
+
+[![Watch the video](https://img.youtube.com/vi/XW75s2KHlpI/maxresdefault.jpg)](https://youtu.be/XW75s2KHlpI)
