@@ -323,7 +323,7 @@ Magic Light Cup Module KY-027
 ## Flame Sensor Module KY-026
 Flame Sensor Module KY-026
 
-## Flame Sensor Module KY-026
+## Code - Flame Sensor Module KY-026
 
 <pre>
 <font color="#00979c">int</font> <font color="#000000">led</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define the LED pin</font>
@@ -365,4 +365,51 @@ Flame Sensor Module KY-026
 ## Video - Flame Sensor Module KY-026
 
 [![Watch the video](https://img.youtube.com/vi/QOse_3NUzKg/maxresdefault.jpg)](https://youtu.be/QOse_3NUzKg)
+
+
+## Infrared Obstacle Avoidance Sensor Module KY-032 
+Infrared Obstacle Avoidance Sensor Module KY-032 
+
+## Code - Infrared Obstacle Avoidance Sensor Module KY-032
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">ledPin</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; LED pin on arduino</font>
+<font color="#00979c">int</font> <font color="#000000">detectorPin</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; obstacle avoidance sensor interface</font>
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; variable to store result</font>
+<font color="#434f54">&#47;&#47;int enablePin = 2; &nbsp;&#47;&#47; sensor enable interface (EN)</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">ledPin</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Define LED as output interface</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">detectorPin</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; Define obstacle avoidance sensor as input interface</font>
+
+ &nbsp;<font color="#434f54">&#47;&#47; [uncomment and remove jumper on module to use enable pin (EN)]</font>
+ &nbsp;<font color="#434f54">&#47;&#47;pinMode(enablePin, OUTPUT);</font>
+ &nbsp;<font color="#434f54">&#47;&#47;digitalWrite(enablePin, HIGH); &nbsp;&#47;&#47; Enable sensor</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#000000">val</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">detectorPin</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Read value from sensor</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#434f54">&#47;&#47; When the sensor detects an obstacle, the LED on the Arduino lights up</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">ledPin</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">else</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">ledPin</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Infrared Obstacle Avoidance Sensor Module KY-032
+
+[![Watch the video](https://img.youtube.com/vi/UYdbnZCY8kA/maxresdefault.jpg)](https://youtu.be/UYdbnZCY8kA)
+
+
+
+
+
+
 
