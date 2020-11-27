@@ -408,8 +408,40 @@ Infrared Obstacle Avoidance Sensor Module KY-032
 [![Watch the video](https://img.youtube.com/vi/UYdbnZCY8kA/maxresdefault.jpg)](https://youtu.be/UYdbnZCY8kA)
 
 
+## RGB LED SMD Module KY-009
+RGB LED SMD Module KY-009
 
+## Code - RGB LED SMD Module KY-009
 
+<pre>
+<font color="#00979c">int</font> <font color="#000000">pinoRed</font> <font color="#434f54">=</font> <font color="#000000">9</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO DIGITAL UTILIZADO PELO TERMINAL VERMELHO</font>
+<font color="#00979c">int</font> <font color="#000000">pinoGreen</font> <font color="#434f54">=</font> <font color="#000000">10</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO DIGITAL UTILIZADO PELO TERMINAL VERDE</font>
+<font color="#00979c">int</font> <font color="#000000">pinoBlue</font> <font color="#434f54">=</font> <font color="#000000">11</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO DIGITAL UTILIZADO PELO TERMINAL AZUL</font>
+ 
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;VARIÁVEL DO TIPO INTEIRA</font>
+ 
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoRed</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO SAÍDA</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoBlue</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO SAÍDA</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoGreen</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO SAÍDA</font>
+<font color="#000000">}</font>
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font> <font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">=</font> <font color="#000000">255</font><font color="#000000">;</font> <font color="#000000">val</font> <font color="#434f54">&gt;</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">val</font> <font color="#434f54">--</font><font color="#000000">)</font><font color="#000000">{</font> <font color="#434f54">&#47;&#47;PARA val IGUAL A 255, ENQUANTO val MAIOR QUE 0, DECREMENTA val</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">pinoRed</font><font color="#434f54">,</font> <font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO RECEBE O VALOR</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">pinoBlue</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#434f54">-</font><font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO RECEBE O VALOR</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">pinoGreen</font><font color="#434f54">,</font> <font color="#000000">128</font><font color="#434f54">-</font><font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO RECEBE O VALOR</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font> <font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;INTERVALO DE 10 MILISSEGUNDOS</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#5e6d03">for</font><font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">val</font> <font color="#434f54">&lt;</font> <font color="#000000">255</font><font color="#000000">;</font> <font color="#000000">val</font> <font color="#434f54">++</font><font color="#000000">)</font><font color="#000000">{</font> <font color="#434f54">&#47;&#47;PARA val IGUAL A 0, ENQUANTO val MENOR QUE 255, INCREMENTA val</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">pinoRed</font><font color="#434f54">,</font> <font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO RECEBE O VALOR</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">pinoBlue</font><font color="#434f54">,</font> <font color="#000000">255</font><font color="#434f54">-</font><font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO RECEBE O VALOR</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">analogWrite</font><font color="#000000">(</font><font color="#000000">pinoGreen</font><font color="#434f54">,</font> <font color="#000000">128</font><font color="#434f54">-</font><font color="#000000">val</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO RECEBE O VALOR</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font> <font color="#000000">(</font><font color="#000000">10</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;INTERVALO DE 10 MILISSEGUNDOS</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
 
+</pre>
 
+## Video - RGB LED SMD Module KY-009
 
+[![Watch the video](https://img.youtube.com/vi/5tEUm2QDVbo/maxresdefault.jpg)](https://youtu.be/5tEUm2QDVbo)
