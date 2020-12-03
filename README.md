@@ -515,3 +515,116 @@ Tilt Switch Module KY-020
 
 [![Watch the video](https://img.youtube.com/vi/ONL_qCj43NE/maxresdefault.jpg)](https://youtu.be/ONL_qCj43NE)
 
+
+## Heartbeat sensor KY-039
+Heartbeat sensor KY-039
+
+## Code - Heartbeat sensor KY-039
+
+<pre>
+
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">LiquidCrystal</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#5e6d03">#define</font> <font color="#000000">samp_siz</font> <font color="#000000">4</font>
+<font color="#5e6d03">#define</font> <font color="#000000">rise_threshold</font> <font color="#000000">5</font>
+<font color="#434f54">&#47;&#47; Pulse Monitor Test Script</font>
+<font color="#00979c">int</font> <font color="#000000">sensorPin</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+
+<font color="#434f54">&#47;&#47;Define os pinos que serão utilizados para ligação ao display</font>
+<b><font color="#d35400">LiquidCrystal</font></b> <font color="#000000">lcd</font><font color="#000000">(</font><font color="#000000">12</font><font color="#434f54">,</font> <font color="#000000">11</font><font color="#434f54">,</font> <font color="#000000">5</font><font color="#434f54">,</font> <font color="#000000">4</font><font color="#434f54">,</font> <font color="#000000">3</font><font color="#434f54">,</font> <font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+
+
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Define o número de colunas e linhas do LCD</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">16</font><font color="#434f54">,</font> <font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font> <font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+
+ &nbsp;<font color="#434f54">&#47;&#47;Limpa a tela</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">clear</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#00979c">float</font> <font color="#000000">reads</font><font color="#000000">[</font><font color="#000000">samp_siz</font><font color="#000000">]</font><font color="#434f54">,</font> <font color="#000000">sum</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">long</font> <font color="#00979c">int</font> <font color="#000000">now</font><font color="#434f54">,</font> <font color="#000000">ptr</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">float</font> <font color="#000000">last</font><font color="#434f54">,</font> <font color="#000000">reader</font><font color="#434f54">,</font> <font color="#000000">start</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">float</font> <font color="#000000">first</font><font color="#434f54">,</font> <font color="#000000">second</font><font color="#434f54">,</font> <font color="#000000">third</font><font color="#434f54">,</font> <font color="#000000">before</font><font color="#434f54">,</font> <font color="#000000">print_value</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">bool</font> <font color="#000000">rising</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">rise_count</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">n</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">long</font> <font color="#00979c">int</font> <font color="#000000">last_beat</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">for</font> <font color="#000000">(</font><font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> <font color="#000000">samp_siz</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">reads</font><font color="#000000">[</font><font color="#000000">i</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">sum</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">ptr</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">while</font> <font color="#000000">(</font><font color="#000000">1</font><font color="#000000">)</font>
+ &nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; calculate an average of the sensor</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; during a 20 ms period (this will eliminate</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the 50 Hz noise caused by electric light</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">n</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">start</font> <font color="#434f54">=</font> <font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">reader</font> <font color="#434f54">=</font> <font color="#000000">0.</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">do</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">reader</font> <font color="#434f54">+=</font> <font color="#d35400">analogRead</font> <font color="#000000">(</font><font color="#000000">sensorPin</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">n</font><font color="#434f54">++</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">now</font> <font color="#434f54">=</font> <font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">while</font> <font color="#000000">(</font><font color="#000000">now</font> <font color="#434f54">&lt;</font> <font color="#000000">start</font> <font color="#434f54">+</font> <font color="#000000">20</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">reader</font> <font color="#434f54">&#47;=</font> <font color="#000000">n</font><font color="#000000">;</font> &nbsp;<font color="#434f54">&#47;&#47; we got an average</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; Add the newest measurement to an array</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; and subtract the oldest measurement from the array</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; to maintain a sum of last measurements</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">sum</font> <font color="#434f54">-=</font> <font color="#000000">reads</font><font color="#000000">[</font><font color="#000000">ptr</font><font color="#000000">]</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">sum</font> <font color="#434f54">+=</font> <font color="#000000">reader</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">reads</font><font color="#000000">[</font><font color="#000000">ptr</font><font color="#000000">]</font> <font color="#434f54">=</font> <font color="#000000">reader</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">last</font> <font color="#434f54">=</font> <font color="#000000">sum</font> <font color="#434f54">&#47;</font> <font color="#000000">samp_siz</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; now last holds the average of the values in the array</font>
+ &nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; check for a rising curve (= a heart beat)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">last</font> <font color="#434f54">&gt;</font> <font color="#000000">before</font><font color="#000000">)</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rise_count</font><font color="#434f54">++</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#434f54">!</font><font color="#000000">rising</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">rise_count</font> <font color="#434f54">&gt;</font> <font color="#000000">rise_threshold</font><font color="#000000">)</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; Ok, we have detected a rising curve, which implies a heartbeat.</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; Record the time since last beat, keep track of the two previous</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; times (first, second, third) to get a weighed average.</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; The rising flag prevents us from detecting the same rise</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; more than once.</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rising</font> <font color="#434f54">=</font> <font color="#00979c">true</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">first</font> <font color="#434f54">=</font> <font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#434f54">-</font> <font color="#000000">last_beat</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">last_beat</font> <font color="#434f54">=</font> <font color="#d35400">millis</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; Calculate the weighed average of heartbeat rate</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; according to the three last beats</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">print_value</font> <font color="#434f54">=</font> <font color="#000000">60000.</font> <font color="#434f54">&#47;</font> <font color="#000000">(</font><font color="#000000">0.4</font> <font color="#434f54">*</font> <font color="#000000">first</font> <font color="#434f54">+</font> <font color="#000000">0.3</font> <font color="#434f54">*</font> <font color="#000000">second</font> <font color="#434f54">+</font> <font color="#000000">0.3</font> <font color="#434f54">*</font> <font color="#000000">third</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Posiciona o cursor na coluna 3, linha 0;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">setCursor</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47;Envia o texto entre aspas para o LCD</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Heartbeat&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">setCursor</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">print_value</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">third</font> <font color="#434f54">=</font> <font color="#000000">second</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">second</font> <font color="#434f54">=</font> <font color="#000000">first</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#5e6d03">else</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; Ok, the curve is falling</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rising</font> <font color="#434f54">=</font> <font color="#00979c">false</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#000000">rise_count</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">}</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">before</font> <font color="#434f54">=</font> <font color="#000000">last</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">ptr</font><font color="#434f54">++</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">ptr</font> <font color="#434f54">%=</font> <font color="#000000">samp_siz</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Heartbeat sensor KY-039
+
+[![Watch the video](https://img.youtube.com/vi/n4XcPgWmFyQ/maxresdefault.jpg)](https://youtu.be/n4XcPgWmFyQ)
