@@ -628,3 +628,33 @@ Heartbeat sensor KY-039
 ## Video - Heartbeat sensor KY-039
 
 [![Watch the video](https://img.youtube.com/vi/n4XcPgWmFyQ/maxresdefault.jpg)](https://youtu.be/n4XcPgWmFyQ)
+
+## Vibration Switch Module KY-002
+Vibration Switch Module KY-002
+
+## Code - Vibration Switch Module KY-002
+
+<pre>
+<font color="#00979c">int</font> <font color="#000000">Led</font> <font color="#434f54">=</font> <font color="#000000">13</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define the LED Pin</font>
+<font color="#00979c">int</font> <font color="#000000">shock</font> <font color="#434f54">=</font> <font color="#000000">3</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define the sensor Pin </font>
+<font color="#00979c">int</font> <font color="#000000">val</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define; a numeric variable val </font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font> <font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; LED pin as output &nbsp;</font>
+ &nbsp;<font color="#d35400">pinMode</font> <font color="#000000">(</font><font color="#000000">shock</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; input from KY-002 sensor</font>
+<font color="#000000">}</font> 
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font> <font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#000000">val</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font> <font color="#000000">(</font><font color="#000000">shock</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; read the value from KY-002</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">val</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font> <font color="#000000">)</font> <font color="#000000">{</font><font color="#434f54">&#47;&#47; when sensor detects shock, LED flashes &nbsp;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font> <font color="#5e6d03">else</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font> <font color="#000000">(</font><font color="#000000">Led</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Vibration Switch Module KY-002
+
+[![Watch the video](https://img.youtube.com/vi/Jr5IeYNQmTY/maxresdefault.jpg)](https://youtu.be/Jr5IeYNQmTY)
