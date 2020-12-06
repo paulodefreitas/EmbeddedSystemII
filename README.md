@@ -710,3 +710,33 @@ Vibration Switch Module KY-002
 ## Video - 18B20 temp ky - 001(hw - 506)
 
 [![Watch the video](https://img.youtube.com/vi/Ibjyvysk8Aw/maxresdefault.jpg)](https://youtu.be/Ibjyvysk8Aw)
+
+
+## Photoresistor Module KY-018
+Photoresistor Module KY-018
+
+## Code - Photoresistor Module KY-018
+
+<pre>
+<font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">pinoLed</font> <font color="#434f54">=</font> <font color="#000000">10</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO DIGITAL UTILIZADO PELO LED</font>
+<font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">pinoLDR</font> <font color="#434f54">=</font> <font color="#000000">A5</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;PINO ANALÓGICO UTILIZADO PELO LDR</font>
+ &nbsp;
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font> &nbsp;
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO SAÍDA</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">pinoLDR</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;DEFINE O PINO COMO ENTRADA</font>
+<font color="#000000">}</font> &nbsp;&nbsp;&nbsp;
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;O VALOR 600 PODE SER AJUSTADO</font>
+ &nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">pinoLDR</font><font color="#000000">)</font> <font color="#434f54">&gt;</font> <font color="#000000">600</font><font color="#000000">)</font><font color="#000000">{</font> <font color="#434f54">&#47;&#47;SE O VALOR LIDO FOR MAIOR QUE 600, FAZ</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;ACENDE O LED</font>
+ &nbsp;<font color="#000000">}</font> &nbsp;
+ &nbsp;<font color="#5e6d03">else</font><font color="#000000">{</font> <font color="#434f54">&#47;&#47;SENÃO, FAZ</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">pinoLed</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;APAGA O LED</font>
+ &nbsp;<font color="#000000">}</font> &nbsp;
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Photoresistor Module KY-018
+
+[![Watch the video](https://img.youtube.com/vi/J8cb6l8GBLo/maxresdefault.jpg)](https://youtu.be/J8cb6l8GBLo)
