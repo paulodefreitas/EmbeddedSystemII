@@ -813,6 +813,38 @@ Temp and humidity ky - 015
 
 </pre>
 
-## Video - Photoresistor Module KY-018
+## Video - Temp and humidity ky - 015
 
 [![Watch the video](https://img.youtube.com/vi/QxNOflGUBB8/maxresdefault.jpg)](https://youtu.be/QxNOflGUBB8)
+
+## IR receiver KY - 022
+IR receiver KY - 022
+
+## Code - IR receiver KY - 022
+
+<pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">IRremote</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#00979c">int</font> <font color="#000000">RECV_PIN</font> <font color="#434f54">=</font> <font color="#000000">11</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define input pin on Arduino</font>
+<b><font color="#d35400">IRrecv</font></b> <font color="#000000">irrecv</font><font color="#000000">(</font><font color="#000000">RECV_PIN</font><font color="#000000">)</font><font color="#000000">;</font>
+<b><font color="#d35400">decode_results</font></b> <font color="#000000">results</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; decode_results class is defined in IRremote.h</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">irrecv</font><font color="#434f54">.</font><font color="#d35400">enableIRIn</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Start the receiver</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">irrecv</font><font color="#434f54">.</font><font color="#d35400">decode</font><font color="#000000">(</font><font color="#434f54">&amp;</font><font color="#000000">results</font><font color="#000000">)</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">results</font><font color="#434f54">.</font><font color="#000000">value</font><font color="#434f54">,</font> <font color="#00979c">HEX</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">irrecv</font><font color="#434f54">.</font><font color="#d35400">resume</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Receive the next value</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#d35400">delay</font> <font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; small delay to prevent reading errors</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - IR receiver KY - 022
+
+[![Watch the video](https://img.youtube.com/vi/_eNGLsfv03U/maxresdefault.jpg)](https://youtu.be/_eNGLsfv03U)
