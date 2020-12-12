@@ -848,3 +848,51 @@ IR receiver KY - 022
 ## Video - IR receiver KY - 022
 
 [![Watch the video](https://img.youtube.com/vi/_eNGLsfv03U/maxresdefault.jpg)](https://youtu.be/_eNGLsfv03U)
+
+## IR emission ky - 005
+IR emission ky - 005
+
+## Code - IR emission ky - 005
+
+<pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><font color="#000000">IRremote</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#00979c">const</font> <font color="#00979c">int</font> <font color="#000000">buttonPin</font> <font color="#434f54">=</font> <font color="#000000">2</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; the number of the pushbutton pin</font>
+
+<font color="#00979c">int</font> <font color="#000000">RECV_PIN</font> <font color="#434f54">=</font> <font color="#000000">11</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; define input pin on Arduino</font>
+<b><font color="#d35400">IRrecv</font></b> <font color="#000000">irrecv</font><font color="#000000">(</font><font color="#000000">RECV_PIN</font><font color="#000000">)</font><font color="#000000">;</font>
+<b><font color="#d35400">decode_results</font></b> <font color="#000000">results</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; decode_results class is defined in IRremote.h</font>
+
+<b><font color="#d35400">IRsend</font></b> <font color="#000000">irsend</font><font color="#000000">;</font>
+
+<font color="#434f54">&#47;&#47; variables will change:</font>
+<font color="#00979c">int</font> <font color="#000000">buttonState</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">&#47;&#47; variable for reading the pushbutton status</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">irrecv</font><font color="#434f54">.</font><font color="#d35400">enableIRIn</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Start the receiver</font>
+ &nbsp;<font color="#434f54">&#47;&#47; initialize the pushbutton pin as an input:</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">buttonPin</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47; read the state of the pushbutton value:</font>
+ &nbsp;<font color="#000000">buttonState</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">buttonPin</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">irrecv</font><font color="#434f54">.</font><font color="#d35400">decode</font><font color="#000000">(</font><font color="#434f54">&amp;</font><font color="#000000">results</font><font color="#000000">)</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">results</font><font color="#434f54">.</font><font color="#000000">value</font><font color="#434f54">,</font> <font color="#00979c">HEX</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">irrecv</font><font color="#434f54">.</font><font color="#d35400">resume</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Receive the next value</font>
+ &nbsp;<font color="#000000">}</font>
+ &nbsp;<font color="#d35400">delay</font> <font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; small delay to prevent reading errors</font>
+
+ &nbsp;<font color="#434f54">&#47;&#47; check if the pushbutton is pressed. If it is, the buttonState is HIGH:</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonState</font> <font color="#434f54">==</font> <font color="#00979c">HIGH</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">irsend</font><font color="#434f54">.</font><font color="#d35400">sendSony</font><font color="#000000">(</font><font color="#000000">0xa90</font><font color="#434f54">,</font> <font color="#000000">12</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; Sony TV power code</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - IR emission ky - 005
+
+[![Watch the video](https://img.youtube.com/vi/TSoTk0WViJw/maxresdefault.jpg)](https://youtu.be/TSoTk0WViJw)
