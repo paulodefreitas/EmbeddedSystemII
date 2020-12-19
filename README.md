@@ -944,3 +944,56 @@ RGB Full color LED module ky 016
 ## Video - RGB Full color LED module ky 016
 
 [![Watch the video](https://img.youtube.com/vi/pCN1tsYWDhw/maxresdefault.jpg)](https://youtu.be/pCN1tsYWDhw)
+
+
+## Analog temperature sensor module ky 013
+Analog temperature sensor module ky 013
+
+## Code - Analog temperature sensor module ky 013
+
+<pre>
+<font color="#5e6d03">#include</font> <font color="#434f54">&lt;</font><b><font color="#d35400">LiquidCrystal</font></b><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+
+<font color="#434f54">&#47;&#47;Define os pinos que serão utilizados para ligação ao display</font>
+<b><font color="#d35400">LiquidCrystal</font></b> <font color="#000000">lcd</font><font color="#000000">(</font><font color="#000000">12</font><font color="#434f54">,</font> <font color="#000000">11</font><font color="#434f54">,</font> <font color="#000000">5</font><font color="#434f54">,</font> <font color="#000000">4</font><font color="#434f54">,</font> <font color="#000000">3</font><font color="#434f54">,</font> <font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#00979c">int</font> <font color="#000000">ThermistorPin</font> <font color="#434f54">=</font> <font color="#000000">A0</font><font color="#000000">;</font>
+<font color="#00979c">int</font> <font color="#000000">Vo</font><font color="#000000">;</font>
+<font color="#00979c">float</font> <font color="#000000">R1</font> <font color="#434f54">=</font> <font color="#000000">10000</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; value of R1 on board</font>
+<font color="#00979c">float</font> <font color="#000000">logR2</font><font color="#434f54">,</font> <font color="#000000">R2</font><font color="#434f54">,</font> <font color="#000000">T</font><font color="#000000">;</font>
+<font color="#00979c">float</font> <font color="#000000">c1</font> <font color="#434f54">=</font> <font color="#000000">0.001129148</font><font color="#434f54">,</font> <font color="#000000">c2</font> <font color="#434f54">=</font> <font color="#000000">0.000234125</font><font color="#434f54">,</font> <font color="#000000">c3</font> <font color="#434f54">=</font> <font color="#000000">0.0000000876741</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;steinhart-hart coeficients for thermistor</font>
+
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Define o número de colunas e linhas do LCD</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">16</font><font color="#434f54">,</font> <font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font>
+<font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Limpa a tela</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">clear</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Posiciona o cursor na coluna 3, linha 0;</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">setCursor</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Envia o texto entre aspas para o LCD</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Temp:&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">setCursor</font><font color="#000000">(</font><font color="#000000">0</font><font color="#434f54">,</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">;</font>
+
+ &nbsp;<font color="#000000">Vo</font> <font color="#434f54">=</font> <font color="#d35400">analogRead</font><font color="#000000">(</font><font color="#000000">ThermistorPin</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">R2</font> <font color="#434f54">=</font> <font color="#000000">R1</font> <font color="#434f54">*</font> <font color="#000000">(</font><font color="#000000">1023.0</font> <font color="#434f54">&#47;</font> <font color="#000000">(</font><font color="#00979c">float</font><font color="#000000">)</font><font color="#000000">Vo</font> <font color="#434f54">-</font> <font color="#000000">1.0</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;calculate resistance on thermistor</font>
+ &nbsp;<font color="#000000">logR2</font> <font color="#434f54">=</font> <font color="#d35400">log</font><font color="#000000">(</font><font color="#000000">R2</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">T</font> <font color="#434f54">=</font> <font color="#000000">(</font><font color="#000000">1.0</font> <font color="#434f54">&#47;</font> <font color="#000000">(</font><font color="#000000">c1</font> <font color="#434f54">+</font> <font color="#000000">c2</font> <font color="#434f54">*</font> <font color="#000000">logR2</font> <font color="#434f54">+</font> <font color="#000000">c3</font> <font color="#434f54">*</font> <font color="#000000">logR2</font> <font color="#434f54">*</font> <font color="#000000">logR2</font> <font color="#434f54">*</font> <font color="#000000">logR2</font><font color="#000000">)</font><font color="#000000">)</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47; temperature in Kelvin</font>
+ &nbsp;<font color="#000000">T</font> <font color="#434f54">=</font> <font color="#000000">T</font> <font color="#434f54">-</font> <font color="#000000">273.15</font><font color="#000000">;</font> <font color="#434f54">&#47;&#47;convert Kelvin to Celcius</font>
+ &nbsp;<font color="#434f54">&#47;&#47; T = (T * 9.0)&#47; 5.0 + 32.0; &#47;&#47;convert Celcius to Farenheit</font>
+
+ &nbsp;<font color="#000000">lcd</font><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">T</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">5000</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</pre>
+
+## Video - Analog temperature sensor module ky 013
+
+[![Watch the video](https://img.youtube.com/vi/jMflci2ut4k/maxresdefault.jpg)](https://youtu.be/jMflci2ut4k)
